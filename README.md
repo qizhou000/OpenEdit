@@ -3,7 +3,7 @@ A Modular Language Model Editing Repository that is easy to call and evaluate
 model editing methods on diverse language models.
 
 
-# New editor code is constantly being added
+# New editor code is being added
 Including MEMIT, SERAC, T-Patcher, etc.
 
 # New Editor
