@@ -1,10 +1,10 @@
 # OpenEdit
 A Modular Language Model Editing Repository that is easy to call and evaluate 
 model editing methods on diverse language models.
+New editor code is being added including MEMIT, SERAC, T-Patcher, etc.
 
-
-# New editor code is being added
-Including MEMIT, SERAC, T-Patcher, etc.
+# Evaluation
+If you want to evaluate editors, use `evaluate.evaluation.Evaluation`.
 
 # New Editor
 If you want to implement a new language model editor, please inherit the base 
