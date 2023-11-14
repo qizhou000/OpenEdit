@@ -1,10 +1,31 @@
 # OpenEdit
-A Modular Language Model Editing Repository that is easy to call and evaluate 
+A Modular Language Model Editing Repository easy to call and evaluate 
 model editing methods on diverse language models.
 New editor code is being added including MEMIT, SERAC, T-Patcher, etc.
 
 # Evaluation
 If you want to evaluate editors, use `evaluate.evaluation.Evaluation`.
+## demo
+To editing a language model using specific editing method, you just need to perform three steps. The following shows the three steps for evaluating ROME:
+1. Instantiate a language model to be edited and its corresponding tokenizer.
+```
+from transformers import  AutoTokenizer, AutoModelForCausalLM
+model = AutoModelForCausalLM.from_pretrained(model_path) 
+tokenizer = AutoTokenizer.from_pretrained(model_path)
+```
+2. Initialize a model editor, pass in the instantiated model and tokenizer, as well as the corresponding editor configuration,
+where directory path `rome_stats_dir` is the statistical matrix specifically required for the ROME editing method. You can download for GPT2-XL and GPT-J-6B from official website
+<https://rome.baulab.info/data/stats/>
+```
+from editors.rome import ROME, ROMEConfig
+config = ROMEConfig.from_yaml(rome_config_path)
+rome = ROME(model, tokenizer, config, rome_stats_dir)
+```
+3. 
+
+
+
+Python script `eval_rome.py` shows a demonstration of editing GPT2-XL using ROME.
 
 # Extra Editor
 If you want to implement a new language model editor, please inherit the base 
