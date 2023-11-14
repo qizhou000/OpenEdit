@@ -53,7 +53,7 @@ requests = [{ # for example
 }]
 eome_editor.edit_batch(requests) 
 ```
-for batched samples (only support for a few editors). If you want to restore the edited model to the original model, run:
+for batched samples (only supported by a few editors). If you want to restore the edited model to the original model, run:
 ```python
 eome_editor.restore_to_original_model(request) # 
 ```
