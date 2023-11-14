@@ -25,10 +25,10 @@ rome = ROME(model, tokenizer, config, rome_stats_dir)
 3. Evaluate.
 ```python
 data_path = 'data/evaluation/zsre/zsre_mend_eval.json'
-test_sample_list = TestSampleList.zsre(data_path, None)
-ev = Evaluation(rome, test_sample_list, None)
-ev.evaluate_single_edit()
-ev.evaluate_sequential_edit(10)
+test_sample_list = TestSampleList.zsre(data_path, None) # construct dataset
+ev = Evaluation(rome, test_sample_list, None) # instantiate evaluation class
+ev.evaluate_single_edit() # evaluation on single editing
+ev.evaluate_sequential_edit(10) # evaluation on 10 times sequential editing
 ev.evaluate_sequential_edit(100)
 ev.evaluate_sequential_edit(1000)
 ```
@@ -60,8 +60,8 @@ eome_editor.restore_to_original_model(request) #
 
 
 # Extra Editor
-If you want to implement a new language model editor, please inherit the base 
-class `editors.editor.BaseEditor` and implement the corresponding abstract functions.
+If you want to implement a new language model editor, please inherit the base editor
+class `editors.editor.BaseEditor` and base editor config class `editors.editor.EditorConfig`.
 
 
 # Extra Evaluation Dataset
