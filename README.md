@@ -3,8 +3,11 @@ A Modular Language Model Editing Repository easy to call and evaluate
 model editing methods on diverse language models.
 New editor code is being added including MEMIT, SERAC, T-Patcher, etc.
 
+
+
 # DEMO
-To editing a language model using specific editing method, you just need to perform three steps. The following shows the three steps for evaluating ROME:
+## EVALUATION
+To EVALUATING a language model using specific editing method, you just need to perform three steps. The following shows the three steps for evaluating ROME:
 1. Instantiate a language model to be edited and its corresponding tokenizer.
 ```
 from transformers import  AutoTokenizer, AutoModelForCausalLM
@@ -19,11 +22,32 @@ from editors.rome import ROME, ROMEConfig
 config = ROMEConfig.from_yaml(rome_config_path)
 rome = ROME(model, tokenizer, config, rome_stats_dir)
 ```
-3. 
+3. Evaluate.
+```
+data_path = 'data/evaluation/zsre/zsre_mend_eval.json'
+test_sample_list = TestSampleList.zsre(data_path, None)
+ev = Evaluation(rome, test_sample_list, None)
+ev.evaluate_single_edit()
+ev.evaluate_sequential_edit(10)
+ev.evaluate_sequential_edit(100)
+ev.evaluate_sequential_edit(1000)
+```
+The python script `eval_rome.py` executed the above code. 
 
+## EDITING
+If you simply want to use one or a few samples to edit the model and perform other subsequent operations, you can run:
+```
+eome_editor.edit_one_piece(request) # request = {'prompt':str, 'subject':str, 'target_new':str}
+```
+for one sample, or 
+```
+eome_editor.edit_batch(requests) # requests = [{'prompt':str, 'subject':str, 'target_new':str}, ...]
+```
+for batched samples (only support for a few editors). If you want to restore the edited model to the original model, run:
+```
+eome_editor.restore_to_original_model(request) # 
+```
 
-
-Python script `eval_rome.py` shows a demonstration of editing GPT2-XL using ROME.
 
 # Extra Editor
 If you want to implement a new language model editor, please inherit the base 
