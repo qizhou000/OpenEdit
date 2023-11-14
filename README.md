@@ -7,7 +7,7 @@ New editor code is being added including MEMIT, SERAC, T-Patcher, etc.
 
 # DEMO
 ## EVALUATION
-To EVALUATING a language model using specific editing method, you just need to perform three steps. The following shows the three steps for evaluating ROME:
+To EVALUATING an editing method on specific language model, you just need to perform three steps. The following shows the three steps for evaluating ROME:
 1. Instantiate a language model to be edited and its corresponding tokenizer.
 ```python
 from transformers import  AutoTokenizer, AutoModelForCausalLM
