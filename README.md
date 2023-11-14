@@ -37,11 +37,21 @@ The python script `eval_rome.py` executed the above code.
 ## EDITING
 If you simply want to use one or a few samples to edit the model and perform other subsequent operations, you can run:
 ```python
-eome_editor.edit_one_piece(request) # request = {'prompt':str, 'subject':str, 'target_new':str}
+request = { # for example
+    'prompt': 'The Space Needle is located in',
+    'subject': 'The Space Needle',
+    'target_new': " London"
+}
+eome_editor.edit_one_piece(request) 
 ```
 for one sample, or 
 ```python
-eome_editor.edit_batch(requests) # requests = [{'prompt':str, 'subject':str, 'target_new':str}, ...]
+requests = [{ # for example
+    'prompt': 'The Space Needle is located in',
+    'subject': 'The Space Needle',
+    'target_new': " London"
+}]
+eome_editor.edit_batch(requests) 
 ```
 for batched samples (only support for a few editors). If you want to restore the edited model to the original model, run:
 ```python
